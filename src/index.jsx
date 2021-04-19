@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 Mia srl
+ * Copyright 2021 Mia srl
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -62,6 +62,10 @@ export async function unmount (props) {
 export async function bootstrap () {
 
 }
+
+if (!window.__POWERED_BY_QIANKUN__) {
+  render({})
+} 
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
