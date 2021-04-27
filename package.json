@@ -17,7 +17,7 @@
     "start": "rescripts start",
     "build": "NODE_ENV=production INLINE_RUNTIME_CHUNK=false rescripts build",
     "test": "rescripts test",
-    "lint": "eslint src --ext .js",
+    "lint": "eslint src --ext .js,.jsx",
     "coverage": "yarn test --coverage --watchAll=false",
     "dev:unit-watch": "yarn test",
     "dev:mock-server": "mock-server --delay 200 --watch --require @babel/register",

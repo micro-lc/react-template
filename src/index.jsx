@@ -65,7 +65,7 @@ export async function bootstrap () {
 
 if (!window.__POWERED_BY_QIANKUN__) {
   render({})
-} 
+}
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
