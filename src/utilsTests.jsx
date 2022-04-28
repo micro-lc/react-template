@@ -17,7 +17,7 @@
 import React from 'react'
 import {IntlProvider} from 'react-intl'
 import {MemoryRouter} from 'react-router-dom'
-import {mount, shallow} from 'enzyme'
+import {render} from '@testing-library/react'
 
 import strings from './strings'
 
@@ -26,27 +26,26 @@ const testStrings = {
   'test.string': 'string test',
   'test.values.string': 'string with values {value}'
 }
+
+console.log(testStrings)
+
 const intlProvider = new IntlProvider({locale: 'en', messages: testStrings}, {})
 const {intl} = intlProvider.state
 
-export function mountWrapperComponent (children) {
-  return mount(
+export function renderWrapperComponent (children) {
+  return render(
     <IntlProvider locale={'en'} messages={testStrings}>
       {children}
     </IntlProvider>
   )
 }
 
-export function mountWrapperContainer (store, initialEntries, children) {
-  return mount(
+export function renderWrapperContainer (store, initialEntries, children) {
+  return render(
     <IntlProvider locale={'en'} messages={testStrings}>
       <MemoryRouter initialEntries={initialEntries}>
         {children}
       </MemoryRouter>
     </IntlProvider>
   )
-}
-
-export function shallowWithIntl (node, context) {
-  return shallow(React.cloneElement(node, {intl}), {context: {intl, ...context}})
 }

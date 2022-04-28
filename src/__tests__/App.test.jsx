@@ -15,11 +15,22 @@
  */
 
 import React from 'react'
+import { screen } from '@testing-library/react'
 
-import {shallowWithIntl} from '../utilsTests'
+import {renderWrapperContainer} from '../utilsTests'
 import App from '../App'
 
 it('renders without crashing', () => {
-  const element = shallowWithIntl(<App />)
-  expect(element.length).toEqual(1)
+  const {asFragment} = renderWrapperContainer(<App />)
+  expect(asFragment()).toMatchSnapshot()
+})
+
+it('intl works', () => {
+  renderWrapperContainer(<App />)
+
+  const saveAndReload = screen.getByText('Edit src/App.js and save to reload')
+  expect(saveAndReload).toBeInTheDocument()
+
+  const learnReact = screen.getByText('Learn React')
+  expect(learnReact).toBeInTheDocument()
 })
