@@ -16,9 +16,9 @@
 
 import './public-path'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import {BrowserRouter} from 'react-router-dom'
 import {IntlProvider} from 'react-intl'
+import {createRoot} from 'react-dom/client'
 
 import PromiseComponent from './components/utils/PromiseComponent'
 import App from './App'
@@ -30,7 +30,6 @@ const navigatorLanguage = navigator.language.substring(0, 2)
 const language = messages[navigatorLanguage] ? navigatorLanguage : 'en'
 
 const rootComponent = (
-
   <PromiseComponent promiseFunction={messages[language]}>
     {strings => (
       <IntlProvider locale={language} messages={strings}>
@@ -42,13 +41,16 @@ const rootComponent = (
   </PromiseComponent>
 )
 
+let root
+
 function retrieveContainer (props) {
   const {container} = props
   return container ? container.querySelector('#root') : document.querySelector('#root')
 }
 
 function render (props) {
-  ReactDOM.render(rootComponent, retrieveContainer(props))
+  root = root || createRoot(retrieveContainer(props))
+  root.render(rootComponent)
 }
 
 export async function mount (props) {
@@ -56,7 +58,7 @@ export async function mount (props) {
 }
 
 export async function unmount (props) {
-  ReactDOM.unmountComponentAtNode(retrieveContainer(props))
+  root.unmount()
 }
 
 export async function bootstrap () {
