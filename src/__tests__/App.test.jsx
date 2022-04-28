@@ -15,7 +15,7 @@
  */
 
 import React from 'react'
-import { screen } from '@testing-library/react'
+import {screen} from '@testing-library/react'
 
 import {renderWrapperComponent} from '../utilsTests'
 import App from '../App'
