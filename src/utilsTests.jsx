@@ -19,18 +19,13 @@ import {IntlProvider} from 'react-intl'
 import {MemoryRouter} from 'react-router-dom'
 import {render} from '@testing-library/react'
 
-import strings from './strings'
+import enStrings from './strings/locales/en.json'
 
 const testStrings = {
-  ...strings.en,
+  ...enStrings,
   'test.string': 'string test',
   'test.values.string': 'string with values {value}'
 }
-
-console.log(testStrings)
-
-const intlProvider = new IntlProvider({locale: 'en', messages: testStrings}, {})
-const {intl} = intlProvider.state
 
 export function renderWrapperComponent (children) {
   return render(
@@ -40,7 +35,7 @@ export function renderWrapperComponent (children) {
   )
 }
 
-export function renderWrapperContainer (store, initialEntries, children) {
+export function renderWrapperContainer (children, initialEntries) {
   return render(
     <IntlProvider locale={'en'} messages={testStrings}>
       <MemoryRouter initialEntries={initialEntries}>

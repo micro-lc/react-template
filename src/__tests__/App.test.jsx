@@ -17,16 +17,16 @@
 import React from 'react'
 import { screen } from '@testing-library/react'
 
-import {renderWrapperContainer} from '../utilsTests'
+import {renderWrapperComponent} from '../utilsTests'
 import App from '../App'
 
 it('renders without crashing', () => {
-  const {asFragment} = renderWrapperContainer(<App />)
+  const {asFragment} = renderWrapperComponent(<App />)
   expect(asFragment()).toMatchSnapshot()
 })
 
 it('intl works', () => {
-  renderWrapperContainer(<App />)
+  renderWrapperComponent(<App />)
 
   const saveAndReload = screen.getByText('Edit src/App.js and save to reload')
   expect(saveAndReload).toBeInTheDocument()
