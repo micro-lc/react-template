@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`should render 1`] = `
 <DocumentFragment>
   <div
     class="App"
@@ -13,16 +13,13 @@ exports[`renders without crashing 1`] = `
         class="App-logo"
         src="logo.svg"
       />
-      <p>
-        Edit src/App.js and save to reload
-      </p>
       <a
         class="App-link"
-        href="https://reactjs.org"
-        rel="noopener noreferrer"
-        target="_blank"
+        href="/about"
       >
-        Learn React
+        <p>
+          Go To About Page
+        </p>
       </a>
     </header>
   </div>

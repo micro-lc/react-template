@@ -24,8 +24,8 @@ import {createRoot} from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-const rootComponent = ({pathname}) => (
-  <Router basename={pathname ?? process.env.PUBLIC_URL}>
+const rootComponent = (pathname) => (
+  <Router basename={pathname}>
     <App />
   </Router>
 )
@@ -38,16 +38,16 @@ function retrieveContainer (props) {
 }
 
 function render (props) {
-  root = root || createRoot(retrieveContainer(props))
-  root.render(rootComponent(props))
-}
-
-export async function mount (props) {
   const {pathname} = new URL(
     document.querySelector('qiankun-head base')?.href ?? document.baseURI,
     window.document.baseURI
   )
-  render({props, pathname})
+  root = root || createRoot(retrieveContainer(props))
+  root.render(rootComponent(pathname))
+}
+
+export async function mount (props) {
+  render(props)
 }
 
 export async function unmount () {
