@@ -43,14 +43,14 @@ function render (props) {
 }
 
 export async function mount (props) {
-  // eslint-disable-next-line no-console
-  const {pathname} = new URL(document.querySelector('qiankun-head base')?.href ?? document.baseURI, window.document.baseURI)
-  // eslint-disable-next-line no-console
-  console.log(document.baseURI, pathname)
+  const {pathname} = new URL(
+    document.querySelector('qiankun-head base')?.href ?? document.baseURI,
+    window.document.baseURI
+  )
   render({props, pathname})
 }
 
-export async function unmount (props) {
+export async function unmount () {
   root.unmount()
   root = undefined
 }
