@@ -13,9 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import React, {} from 'react'
-
-import {FormattedMessage} from 'react-intl'
+import React from 'react'
+import {Routes, Route, Link} from 'react-router-dom'
 
 import logo from './logo.svg'
 import './App.css'
@@ -23,21 +22,36 @@ import './App.css'
 function App () {
   return (
     <div className='App'>
-      <header className='App-header'>
-        <img alt='logo' className='App-logo' src={logo} />
-        <p>
-          <FormattedMessage id={'edit'} />
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          rel='noopener noreferrer'
-          target='_blank'
-        >
-          <FormattedMessage id={'learn'} />
-
-        </a>
-      </header>
+      <Routes>
+        <Route
+          element={
+            <header className='App-header'>
+              <img alt='logo' className='App-logo' src={logo} />
+              <Link
+                className='App-link'
+                to='/about'
+              >
+                <p>{'Go To About Page'}</p>
+              </Link>
+            </header>
+          }
+          path='/'
+        ></Route>
+        <Route
+          element={
+            <header className='App-header'>
+              <div style={{fontSize: '40px', fontWeight: 700}}>{'About'}</div>
+              <Link
+                className='App-link'
+                to='/'
+              >
+                <p>{'Go Home'}</p>
+              </Link>
+            </header>
+          }
+          path='/about'
+        ></Route>
+      </Routes>
     </div>
   )
 }
