@@ -51,7 +51,7 @@ export async function mount (props) {
 }
 
 export async function unmount () {
-  root.unmount()
+  root && root.unmount()
   root = undefined
 }
 
