@@ -33,7 +33,7 @@ jobs:
           test $MAJOR -eq 1 && yarn install --frozen-lockfile || yarn install --immutable
       
       - name: Linter
-      - run: yarn lint
+        run: yarn lint
 
       - name: Test
-      - run: yarn test
+        run: yarn test
