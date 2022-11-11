@@ -21,6 +21,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Touch Lock File
+        run: touch yarn.lock
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -28,9 +31,7 @@ jobs:
           cache: yarn
 
       - name: Install
-        run: |
-          MAJOR=`yarn -v | grep -Eo '^[0-9]+'`
-          test $MAJOR -eq 1 && yarn install --frozen-lockfile || yarn install --immutable
+        run: yarn install
       
       - name: Linter
         run: yarn lint
