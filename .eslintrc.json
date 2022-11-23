@@ -1,5 +1,5 @@
 {
-  "extends": ["react-app", "standard", "plugin:react/recommended"],
+  "extends": ["react-app", "plugin:react/recommended"],
   "parser": "@babel/eslint-parser",
   "settings": {
     "react": {
