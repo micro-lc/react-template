@@ -15,22 +15,20 @@
  */
 
 import React from 'react'
-import {screen} from '@testing-library/react'
+import {MemoryRouter} from 'react-router-dom'
+import {render} from '@testing-library/react'
 
-import {renderWrapperComponent} from '../utilsTests'
 import App from '../App'
 
-it('renders without crashing', () => {
-  const {asFragment} = renderWrapperComponent(<App />)
+function renderWrapperContainer (children, initialEntries) {
+  return render(
+    <MemoryRouter initialEntries={initialEntries}>
+      {children}
+    </MemoryRouter>
+  )
+}
+
+it('should render', () => {
+  const {asFragment} = renderWrapperContainer(<App />)
   expect(asFragment()).toMatchSnapshot()
-})
-
-it('intl works', () => {
-  renderWrapperComponent(<App />)
-
-  const saveAndReload = screen.getByText('Edit src/App.js and save to reload')
-  expect(saveAndReload).toBeInTheDocument()
-
-  const learnReact = screen.getByText('Learn React')
-  expect(learnReact).toBeInTheDocument()
 })

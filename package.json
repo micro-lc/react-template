@@ -1,46 +1,21 @@
 {
-  "name": "mia_template_service_name_placeholder",
-  "version": "0.1.0",
+  "name": "@micro-lc/react-template",
+  "version": "1.0.0",
   "private": true,
   "homepage": "./",
   "dependencies": {
-    "axios": "^0.27.2",
-    "prop-types": "^15.8.1",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
-    "react-error-boundary": "^3.1.4",
-    "react-intl": "^6.0.3",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "5.0.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.5.0"
   },
   "scripts": {
-    "start": "rescripts start",
-    "build": "NODE_ENV=production INLINE_RUNTIME_CHUNK=false rescripts build",
-    "test": "rescripts test",
-    "lint": "eslint src --ext .js,.jsx",
-    "coverage": "yarn test --coverage --watchAll=false",
-    "dev:unit-watch": "yarn test",
-    "dev:mock-server": "mock-server --delay 200 --watch --require @babel/register",
-    "dev:styleguide": "styleguidist server",
-    "dev": "npm-run-all -p dev:** start",
-    "styleguide:build": "styleguidist build",
-    "update-docker-version": "sed -i.bck \"s|version=\\\"[0-9]*\\.[0-9]*\\.[0-9]*.*\\\"|version=\\\"${npm_package_version}\\\"|\" Dockerfile",
-    "version": "npm run update-docker-version && rm -fr Dockerfile.bck && git add Dockerfile"
-  },
-  "proxy": "http://localhost:3456",
-  "standard-version": {
-    "skip": {
-      "bump": true,
-      "tag": true
-    }
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all lint coverage"
-    }
-  },
-  "eslintConfig": {
-    "extends": "react-app"
+    "start": "craco start",
+    "build": "NODE_ENV=production INLINE_RUNTIME_CHUNK=false craco build",
+    "test": "craco test",
+    "lint": "eslint src --ext .js,.jsx --resolve-plugins-relative-to .",
+    "coverage": "craco test --coverage --watchAll=false",
+    "serve": "python3 server.py -d ./build -p 8003",
+    "update-docker-version": "sed -i.bck \"s|version=\\\"[0-9]*\\.[0-9]*\\.[0-9]*.*\\\"|version=\\\"${npm_package_version}\\\"|\" Dockerfile"
   },
   "browserslist": {
     "production": [
@@ -56,25 +31,20 @@
     ]
   },
   "devDependencies": {
-    "@babel/register": "^7.17.7",
-    "@rescripts/cli": "^0.0.16",
-    "@staticdeploy/mock-server": "^3.0.0",
-    "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.3.0",
+    "@babel/eslint-parser": "^7.19.1",
+    "@craco/craco": "^7.0.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "eslint": "^8.30.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-config-standard": "^17.0.0",
-    "eslint-config-standard-react": "^11.0.1",
     "eslint-plugin-flowtype": "^8.0.3",
     "eslint-plugin-import": "^2.26.0",
-    "eslint-plugin-jsx-a11y": "^6.5.1",
-    "eslint-plugin-n": "^15.2.1",
+    "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "eslint-plugin-react": "^7.30.0",
-    "eslint-plugin-standard": "^5.0.0",
-    "husky": "^8.0.1",
-    "npm-run-all": "^4.1.5",
-    "react-styleguidist": "^11.2.0",
-    "standard-version": "^9.5.0"
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-react": "^7.31.11",
+    "react-scripts": "^5.0.1"
   }
 }

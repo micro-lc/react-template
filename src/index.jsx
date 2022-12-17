@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable camelcase */
 /*
  * Copyright 2021 Mia srl
  *
@@ -16,29 +18,16 @@
 
 import './public-path'
 import React from 'react'
-import {BrowserRouter} from 'react-router-dom'
-import {IntlProvider} from 'react-intl'
+import {BrowserRouter as Router} from 'react-router-dom'
 import {createRoot} from 'react-dom/client'
 
-import PromiseComponent from './components/utils/PromiseComponent'
 import App from './App'
-import * as serviceWorker from './serviceWorker'
-import messages from './strings'
 import './index.css'
 
-const navigatorLanguage = navigator.language.substring(0, 2)
-const language = messages[navigatorLanguage] ? navigatorLanguage : 'en'
-
-const rootComponent = (
-  <PromiseComponent promiseFunction={messages[language]}>
-    {strings => (
-      <IntlProvider locale={language} messages={strings}>
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
-          <App />
-        </BrowserRouter>
-      </IntlProvider>
-    )}
-  </PromiseComponent>
+const rootComponent = (pathname) => (
+  <Router basename={pathname}>
+    <App />
+  </Router>
 )
 
 let root
@@ -49,16 +38,21 @@ function retrieveContainer (props) {
 }
 
 function render (props) {
+  const {pathname} = new URL(
+    document.querySelector('qiankun-head base')?.href ?? document.baseURI,
+    window.document.baseURI
+  )
   root = root || createRoot(retrieveContainer(props))
-  root.render(rootComponent)
+  root.render(rootComponent(pathname))
 }
 
 export async function mount (props) {
   render(props)
 }
 
-export async function unmount (props) {
-  root.unmount()
+export async function unmount () {
+  root && root.unmount()
+  root = undefined
 }
 
 export async function bootstrap () {
@@ -68,8 +62,3 @@ export async function bootstrap () {
 if (!window.__POWERED_BY_QIANKUN__) {
   render({})
 }
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister()
