@@ -1,4 +1,4 @@
-FROM nginx:1.23.2-alpine as build
+FROM nginx:1.23.3-alpine as build
 
 LABEL name="mia_template_service_name_placeholder" \
       description="%CUSTOM_PLUGIN_SERVICE_DESCRIPTION%" \

@@ -21,22 +21,4 @@ module.exports = {
 
     return config
   }
-
-  // devServer: _ => {
-  //   const config = _;
-
-  //   config.headers = {
-  //     'Access-Control-Allow-Origin': '*',
-  //   };
-  //   config.historyApiFallback = true;
-  //   config.hot = false;
-  //   config.liveReload = false;
-
-  //   return config;
-  // },
-  // output: {
-  //   library: `${name}-[name]`,
-  //   libraryTarget: 'umd',
-  //   globalObject: 'window'
-  // }
 }
