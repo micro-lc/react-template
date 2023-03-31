@@ -34,7 +34,7 @@
     "@babel/eslint-parser": "^7.19.1",
     "@craco/craco": "^7.0.0",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
+    "@testing-library/react": "^14.0.0",
     "eslint": "^8.30.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-config-standard": "^17.0.0",
