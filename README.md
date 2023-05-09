@@ -59,6 +59,21 @@ yarn coverage
 
 Applications build with this template can be used as-is in micro-lc as [parcels](https://micro-lc.io/docs/guides/applications/parcels).
 
+An example configuration may be:
+
+```json5
+{
+  "applications": {
+    "react-parcel": {
+      "integrationMode": "parcel",
+      "route": "./react-parcel/", // <-- must have the ending "/", should have the starting "."
+      "entry": "/my-micro-lc-react-parcel/", // <-- must have the ending "/"
+      "injectBase": true // <-- must be "true" if browser router is used
+    }
+  }
+}
+```
+
 ### Internal routing
 
 The internal routing of the application is already set up to work in micro-lc, meaning that the base url of the internal routes is dynamically
