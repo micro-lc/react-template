@@ -22,7 +22,7 @@
     "@craco/craco": "^7.0.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^14.0.0",
-    "eslint": "^8.41.0",
+    "eslint": "^8.43.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-flowtype": "^8.0.3",
